@@ -3,3 +3,4 @@ Changes for 2024-09-19 - commit 2 : Add validation
 Changes for 2024-09-19 - commit 3 : Fix memory leak
 Changes for 2024-09-19 - commit 4 : Fix navigation issue
 Changes for 2024-09-19 - commit 5 : Add error handling
+Changes for 2024-09-19 - commit 6 : Add loading states
