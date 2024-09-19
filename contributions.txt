@@ -1,1 +1,2 @@
 Changes for 2024-09-19 - commit 1 : Refactor code
+Changes for 2024-09-19 - commit 2 : Add validation
