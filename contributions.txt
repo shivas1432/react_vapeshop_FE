@@ -6,3 +6,4 @@ Changes for 2024-09-19 - commit 5 : Add error handling
 Changes for 2024-09-19 - commit 6 : Add loading states
 Changes for 2024-09-19 - commit 7 : Update API calls
 Changes for 2024-09-20 - commit 1 : Add new feature
+Changes for 2024-09-20 - commit 2 : Refactor code
