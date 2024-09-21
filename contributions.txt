@@ -11,3 +11,4 @@ Changes for 2024-09-20 - commit 3 : Optimize performance
 Changes for 2024-09-20 - commit 4 : Add error handling
 Changes for 2024-09-20 - commit 5 : Add validation
 Changes for 2024-09-20 - commit 6 : Update styling
+Changes for 2024-09-21 - commit 1 : Fix navigation issue
