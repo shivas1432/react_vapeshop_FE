@@ -17,3 +17,4 @@ Changes for 2024-09-21 - commit 3 : Update documentation
 Changes for 2024-09-21 - commit 4 : Fix navigation issue
 Changes for 2024-09-21 - commit 5 : Add unit tests
 Changes for 2024-09-21 - commit 6 : Fix navigation issue
+Changes for 2024-09-21 - commit 7 : Update form handling
