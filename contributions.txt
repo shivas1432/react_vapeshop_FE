@@ -25,3 +25,4 @@ Changes for 2024-09-22 - commit 3 : Optimize performance
 Changes for 2024-09-22 - commit 4 : Optimize performance
 Changes for 2024-09-22 - commit 5 : Fix responsive design
 Changes for 2024-09-22 - commit 6 : Update styling
+Changes for 2024-09-23 - commit 1 : Add unit tests
