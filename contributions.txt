@@ -37,3 +37,4 @@ Changes for 2024-09-24 - commit 1 : Fix memory leak
 Changes for 2024-09-24 - commit 2 : Fix responsive design
 Changes for 2024-09-24 - commit 3 : Update form handling
 Changes for 2024-09-24 - commit 4 : Add accessibility features
+Changes for 2024-09-24 - commit 5 : Update API calls
