@@ -39,3 +39,4 @@ Changes for 2024-09-24 - commit 3 : Update form handling
 Changes for 2024-09-24 - commit 4 : Add accessibility features
 Changes for 2024-09-24 - commit 5 : Update API calls
 Changes for 2024-09-24 - commit 6 : Update styling
+Changes for 2024-09-25 - commit 1 : Update API calls
