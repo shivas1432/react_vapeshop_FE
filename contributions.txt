@@ -46,3 +46,4 @@ Changes for 2024-09-25 - commit 4 : Update documentation
 Changes for 2024-09-25 - commit 5 : Update styling
 Changes for 2024-09-25 - commit 6 : Add accessibility features
 Changes for 2024-09-25 - commit 7 : Update API calls
+Changes for 2024-09-25 - commit 8 : Fix navigation issue
