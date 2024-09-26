@@ -50,3 +50,4 @@ Changes for 2024-09-25 - commit 8 : Fix navigation issue
 Changes for 2024-09-26 - commit 1 : Add new feature
 Changes for 2024-09-26 - commit 2 : Add error handling
 Changes for 2024-09-26 - commit 3 : Update styling
+Changes for 2024-09-26 - commit 4 : Update documentation
