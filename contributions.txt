@@ -61,3 +61,4 @@ Changes for 2024-09-27 - commit 2 : Add loading states
 Changes for 2024-09-27 - commit 3 : Add new feature
 Changes for 2024-09-27 - commit 4 : Refactor code
 Changes for 2024-09-27 - commit 5 : Fix responsive design
+Changes for 2024-09-27 - commit 6 : Update styling
