@@ -1,13 +1,89 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body{
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(200, 200, 200, 0.8));
+  background-size: cover; 
+  background-repeat: no-repeat;
+}
+.home-container {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  font-size: 1.5rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.home-header {
+  padding: 20px;
+  
+}
+
+.home-info {
+  margin: 20px;
+}
+
+.home-actions {
+  margin: 20px;
+}
+
+.home-button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #007BFF;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100px;
+}
+
+.home-button:hover {
+  background-color: #0056b3;
+}
+
+.advertisement {
+  margin: 20px;
+  padding: 20px;
+ 
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center the video vertically within the container */
+  width: 100%; /* Make sure the container takes the full width of its parent */
+  height: 600px; /* Set the height of the container */
+  overflow: hidden; /* Hide any overflow content */
+  position: relative; /* Ensure absolute positioning works inside */
+  margin: 20px auto;
+}
+
+video {
+  position: absolute; /* Position video absolutely within its container */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the video */
+  min-width: 100%; /* Ensure the video covers the entire width */
+  min-height: 100%; /* Ensure the video covers the entire height */
+  object-fit: cover; /* Cover the container while maintaining aspect ratio */
+}
+
+.image-slider {
+  margin: 20px;
+  padding: 20px;
+}
+
+.slider-container {
+  display: flex;
+  justify-content: center;
+}
+
+.slider {
+  display: flex;
+  overflow: hidden;
+  width: 600px; /* Adjust the width to match the images */
+}
+
+.slider img {
+  width: 600px;
+  height: 400px;
+  object-fit: cover; /* Ensures the image covers the dimensions without distortion */
+  margin-right: 10px; /* Space between images */
 }

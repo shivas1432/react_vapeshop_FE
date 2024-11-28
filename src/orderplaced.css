@@ -1,0 +1,73 @@
+/* orderplaced.css */
+
+.order-confirmation-container {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .order-summary {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .order-details {
+    margin-bottom: 20px;
+  }
+  
+  .order-details h3 {
+    margin: 10px 0;
+  }
+  
+  .order-details ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .order-details li {
+    margin-bottom: 5px;
+  }
+  
+  .next-steps {
+    text-align: center;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .btn-primary {
+    background: #007bff;
+    color: #fff;
+  }
+  
+  .btn-primary:hover {
+    background: #0056b3;
+  }
+  
+  .btn-secondary {
+    background: #6c757d;
+    color: #fff;
+  }
+  
+  .btn-secondary:hover {
+    background: #5a6268;
+  }
+  

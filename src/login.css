@@ -1,0 +1,61 @@
+/* src/login.css */
+.login-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-group input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .error-text {
+    color: red;
+    font-size: 12px;
+  }
+  
+  button {
+    padding: 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  /* src/login.css */
+.create-account {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .create-account-link {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .create-account-link:hover {
+    text-decoration: underline;
+  }
+  

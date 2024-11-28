@@ -1,0 +1,103 @@
+/* payment.css */
+
+/* General container styles */
+.checkout-container {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    perspective: 1000px; /* Enables 3D effect */
+  }
+  
+  /* Header styling */
+  .checkout-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Total price styling */
+  .total-price {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  /* Form styling */
+  form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   
+  }
+  
+  /* Fieldset styling */
+  fieldset {
+    border: none;
+    margin: 10px 0;
+    padding: 0;
+    position: relative;
+    transform: rotateX(10deg); /* 3D rotation */
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* Legend styling */
+  legend {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #444;
+  }
+  
+  /* Input styling */
+  input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  input[type="text"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+  }
+  
+  /* Radio button styling */
+  input[type="radio"] {
+    margin-right: 5px;
+  }
+  
+  /* Button styling */
+  button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    transform: perspective(1px) translateZ(0); /* 3D effect */
+  }
+  
+  button[type="submit"]:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  button[type="submit"]:active {
+    transform: scale(0.95);
+  }
+  
+  /* Hide card details initially */
+  .hidden {
+    display: none;
+  }
+  
