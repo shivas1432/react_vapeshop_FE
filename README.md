@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# VapeShop_react  Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the VapeShop Frontend! This is a React-based frontend for an e-commerce website that sells vaping products. This project is built using React, React Router, Axios, and other modern web technologies. It communicates with a backend server to handle user registration, login, checkout, payment, and order placement.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **User Registration**: Users can create an account to shop on the website.
+- **User Login**: Registered users can log in to access their profile.
+- **Product Browse**: Users can browse and view vaping products.
+- **Shopping Cart**: Users can add products to the shopping cart and proceed to checkout.
+- **Checkout**: Users can input their shipping details and proceed with payment.
+- **Order Confirmation**: After successful payment, users will be shown an order confirmation screen.
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React**: A JavaScript library for building user interfaces.
+- **React Router**: For client-side routing and navigation.
+- **Axios**: For making HTTP requests to the backend API.
+- **CSS**: For styling the components.
+- **React Hooks**: `useState`, `useEffect`, etc., to manage state and side effects in the components.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Setup and Installation
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Before you begin, ensure you have the following installed on your local machine:
 
-### `npm run build`
+- **Node.js** and **npm**: [Download and install Node.js], which includes npm (Node Package Manager).
+- **Git**: [Download and install Git].
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Clone the Repository
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Clone the repository to your local machine using the following command:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+git clone https://github.com/shivas1432/react_vapeshop_FE.git
+Install Dependencies
+Navigate to the project directory and install the required dependencies:
 
-### `npm run eject`
+cd vapeshop cd frontend cd client
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+npm install
+Run the Frontend
+Once the dependencies are installed, you can start the development server:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+npm start
+This will start the React development server, and you can access the application by opening http://localhost:3000 in your web browser.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Backend Setup
+To run the full application with a connected backend, follow these steps:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Clone the backend repository ( backend project running on a separate repository).
 
-## Learn More
+Navigate to the backend project directory and run the following command:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+npm run dev
+Ensure your backend API is running on http://localhost:8081 or adjust the API URL in the frontend if needed.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Available Routes
+/: Home page with product details, login, and register options.
+/RegistrationPage: User registration page.
+/login: User login page.
+/home1: After successful login, a homepage for authenticated users.
+/checkout: Shopping cart and checkout page.
+/payment: Payment form for users to complete their purchase.
+/orderplaced: Order confirmation page after the payment
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Contributing
+We welcome contributions to this project! If you have any improvements, bug fixes, or new features in mind, feel free to fork this repository, create a new branch, and submit a pull request.
