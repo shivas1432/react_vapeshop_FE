@@ -1,7 +1,7 @@
 // src/Home.jsx
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './index.css'; // Ensure this file includes styles for the new elements
+import './index.css';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -14,8 +14,51 @@ const Home = () => {
     navigate('/RegistrationPage');
   };
 
+  // Initialize animations when component mounts
+  useEffect(() => {
+    // Animate the header text on page load
+    const header = document.querySelector('.home-header');
+    if (header) {
+      header.classList.add('animate-in');
+    }
+
+    // Set up slider animation
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slider img');
+    const totalSlides = slides.length;
+
+    if (slides.length > 0) {
+      // Initially hide all slides except the first one
+      slides.forEach((slide, index) => {
+        if (index !== 0) {
+          slide.classList.add('hidden');
+        }
+      });
+
+      // Set up the slider interval
+      const sliderInterval = setInterval(() => {
+        slides[currentSlide].classList.add('fade-out');
+        setTimeout(() => {
+          slides[currentSlide].classList.add('hidden');
+          currentSlide = (currentSlide + 1) % totalSlides;
+          slides[currentSlide].classList.remove('hidden');
+          slides[currentSlide].classList.add('fade-in');
+          setTimeout(() => {
+            slides[currentSlide].classList.remove('fade-in');
+            slides[currentSlide - 1 >= 0 ? currentSlide - 1 : totalSlides - 1].classList.remove('fade-out');
+          }, 500);
+        }, 500);
+      }, 4000);
+
+      // Clean up interval on component unmount
+      return () => clearInterval(sliderInterval);
+    }
+  }, []);
+
   return (
     <div className="home-container">
+      <div className="animated-border"></div>
+      
       <header className="home-header">
         <h1>Welcome to VapeShop</h1>
         <p>Your one-stop shop for all your vaping needs!</p>

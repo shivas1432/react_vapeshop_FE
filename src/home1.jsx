@@ -1,182 +1,277 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './home1.css'; // Make sure your styles are defined here
+import './home1.css';
 
 const Home1 = () => {
-  const navigate = useNavigate(); // Initialize useNavigate hook
-
-  // State to keep track of cart items
+  const navigate = useNavigate();
   const [cart, setCart] = useState({});
-  // State to keep track of the selected vape type
   const [selectedType, setSelectedType] = useState('');
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [cartItemCount, setCartItemCount] = useState(0);
+  const [animateCart, setAnimateCart] = useState(false);
 
   // Sample product data
   const productData = {
     'pod-systems': [
-      { name: 'SMOK Nord 4', price: 29.99 },
-      { name: 'Vaporesso XROS', price: 25.99 },
-      { name: 'GeekVape Aegis Pod', price: 32.99 },
-      { name: 'Uwell Caliburn G', price: 27.99 },
-      { name: 'Suorin Air Pro', price: 23.99 },
+      { name: 'SMOK Nord 4', price: 29.99, id: 'ps1' },
+      { name: 'Vaporesso XROS', price: 25.99, id: 'ps2' },
+      { name: 'GeekVape Aegis Pod', price: 32.99, id: 'ps3' },
+      { name: 'Uwell Caliburn G', price: 27.99, id: 'ps4' },
+      { name: 'Suorin Air Pro', price: 23.99, id: 'ps5' },
     ],
     'box-mods': [
-      { name: 'Voopoo Drag 3', price: 49.99 },
-      { name: 'SMOK Morph 2', price: 45.99 },
-      { name: 'GeekVape Aegis Legend 2', price: 52.99 },
-      { name: 'Vaporesso GEN S', price: 47.99 },
-      { name: 'Lost Vape Thelema Quest', price: 54.99 },
+      { name: 'Voopoo Drag 3', price: 49.99, id: 'bm1' },
+      { name: 'SMOK Morph 2', price: 45.99, id: 'bm2' },
+      { name: 'GeekVape Aegis Legend 2', price: 52.99, id: 'bm3' },
+      { name: 'Vaporesso GEN S', price: 47.99, id: 'bm4' },
+      { name: 'Lost Vape Thelema Quest', price: 54.99, id: 'bm5' },
     ],
     'disposable-vapes': [
-      { name: 'Puff Bar Plus', price: 14.99 },
-      { name: 'ELF Bar 5000', price: 16.99 },
-      { name: 'Bang XXL', price: 18.99 },
-      { name: 'Vaporlax Mesh', price: 15.99 },
-      { name: 'Hyde Edge Recharge', price: 17.99 },
+      { name: 'Puff Bar Plus', price: 14.99, id: 'dv1' },
+      { name: 'ELF Bar 5000', price: 16.99, id: 'dv2' },
+      { name: 'Bang XXL', price: 18.99, id: 'dv3' },
+      { name: 'Vaporlax Mesh', price: 15.99, id: 'dv4' },
+      { name: 'Hyde Edge Recharge', price: 17.99, id: 'dv5' },
     ],
     'vape-pens': [
-      { name: 'SMOK Stick N18', price: 21.99 },
-      { name: 'Freemax Twister 30W', price: 24.99 },
-      { name: 'Innokin Endura T18 II', price: 19.99 },
-      { name: 'Vaporesso Sky Solo', price: 22.99 },
-      { name: 'Joyetech eGo AIO', price: 20.99 },
+      { name: 'SMOK Stick N18', price: 21.99, id: 'vp1' },
+      { name: 'Freemax Twister 30W', price: 24.99, id: 'vp2' },
+      { name: 'Innokin Endura T18 II', price: 19.99, id: 'vp3' },
+      { name: 'Vaporesso Sky Solo', price: 22.99, id: 'vp4' },
+      { name: 'Joyetech eGo AIO', price: 20.99, id: 'vp5' },
     ],
     'rebuildable-atomizers': [
-      { name: 'GeekVape Zeus X RTA', price: 29.99 },
-      { name: 'Vandy Vape Kylin Mini V2', price: 32.99 },
-      { name: 'Wotofo Profile RDA', price: 27.99 },
-      { name: 'Dovpo Blotto RTA', price: 30.99 },
-      { name: 'Hellvape Dead Rabbit V2 RDA', price: 33.99 },
+      { name: 'GeekVape Zeus X RTA', price: 29.99, id: 'ra1' },
+      { name: 'Vandy Vape Kylin Mini V2', price: 32.99, id: 'ra2' },
+      { name: 'Wotofo Profile RDA', price: 27.99, id: 'ra3' },
+      { name: 'Dovpo Blotto RTA', price: 30.99, id: 'ra4' },
+      { name: 'Hellvape Dead Rabbit V2 RDA', price: 33.99, id: 'ra5' },
     ],
   };
 
-  // Handle vape type clicks to show products
+  // Update cart item count whenever cart changes
+  useEffect(() => {
+    const count = Object.values(cart).reduce((total, item) => total + item.quantity, 0);
+    setCartItemCount(count);
+  }, [cart]);
+
+  // Animate elements on initial load
+  useEffect(() => {
+    const header = document.querySelector('.home1-header');
+    const categories = document.querySelectorAll('.vape-type');
+    const info = document.querySelector('.home1-info');
+    
+    if (header) header.classList.add('animate-in');
+    if (info) setTimeout(() => info.classList.add('animate-in'), 200);
+    
+    categories.forEach((category, index) => {
+      setTimeout(() => {
+        category.classList.add('animate-in');
+      }, 300 + (index * 100));
+    });
+  }, []);
+
+  // Animate products when category is selected
+  useEffect(() => {
+    if (selectedType) {
+      // First reset animations by removing the animate-in class
+      const products = document.querySelectorAll('.product-item');
+      products.forEach(product => {
+        product.classList.remove('animate-in');
+      });
+      
+      // Force a reflow before adding the animation class again
+      setTimeout(() => {
+        products.forEach((product, index) => {
+          setTimeout(() => {
+            product.classList.add('animate-in');
+          }, 50 + (index * 80));
+        });
+      }, 10);
+    }
+  }, [selectedType]);
+
   const handleVapeTypeClick = (type) => {
-    setSelectedType(type);
+    // If the same type is clicked again, don't change anything
+    // If a new type is clicked, set it as the selected type
+    setSelectedType(currentType => currentType === type ? currentType : type);
   };
 
-  // Handle "Add to Cart" button clicks
-  const handleAddToCart = (productName, price) => {
+  const handleAddToCart = (productName, price, productId) => {
     setCart((prevCart) => {
       const newCart = { ...prevCart };
-      if (newCart[productName]) {
-        newCart[productName].quantity++;
+      if (newCart[productId]) {
+        newCart[productId].quantity++;
       } else {
-        newCart[productName] = { quantity: 1, price };
+        newCart[productId] = { name: productName, quantity: 1, price };
       }
       return newCart;
     });
+    
+    // Trigger cart animation
+    setAnimateCart(true);
+    setTimeout(() => setAnimateCart(false), 500);
   };
 
-  // Handle quantity change
-  const handleQuantityChange = (productName, action) => {
+  const handleQuantityChange = (productId, action) => {
     setCart((prevCart) => {
       const newCart = { ...prevCart };
       if (action === 'increase') {
-        newCart[productName].quantity++;
+        newCart[productId].quantity++;
       } else if (action === 'decrease') {
-        if (newCart[productName].quantity > 1) {
-          newCart[productName].quantity--;
+        if (newCart[productId].quantity > 1) {
+          newCart[productId].quantity--;
         } else {
-          delete newCart[productName];
+          delete newCart[productId];
         }
       }
       return newCart;
     });
   };
 
-  // Handle proceed to checkout
   const handleProceedToCheckout = () => {
-    navigate('/checkout', { state: { cart } }); // Pass cart data to Checkout page
+    navigate('/checkout', { state: { cart } });
   };
 
-  // Handle Logout and redirect to Home page
   const handleLogout = () => {
-    navigate('/home'); // Navigate to Home page
+    navigate('/home');
   };
 
-  // Compute cart items
-  const cartItems = Object.entries(cart).map(([productName, item]) => (
-    <li key={productName}>
-      <span className="cart-product-name">{productName}</span>
-      <div className="price-quantity-container">
-        <span className="quantity-display">{item.quantity}</span>
+  const toggleCart = () => {
+    setIsCartOpen(!isCartOpen);
+  };
+
+  // Format cart items for display
+  const cartItems = Object.entries(cart).map(([productId, item]) => (
+    <li key={productId} className="cart-item">
+      <div className="cart-item-details">
+        <span className="cart-product-name">{item.name}</span>
         <span className="price-display">£{(item.quantity * item.price).toFixed(2)}</span>
-        <div className="buttons-container">
-          <button
-            className="change-quantity"
-            onClick={() => handleQuantityChange(productName, 'increase')}
-          >
-            +
-          </button>
-          <button
-            className="change-quantity"
-            onClick={() => handleQuantityChange(productName, 'decrease')}
-          >
-            -
-          </button>
-        </div>
+      </div>
+      <div className="quantity-controls">
+        <button
+          className="quantity-btn decrease"
+          onClick={() => handleQuantityChange(productId, 'decrease')}
+        >
+          −
+        </button>
+        <span className="quantity-display">{item.quantity}</span>
+        <button
+          className="quantity-btn increase"
+          onClick={() => handleQuantityChange(productId, 'increase')}
+        >
+          +
+        </button>
       </div>
     </li>
   ));
 
+  // Calculate total price
+  const totalPrice = Object.values(cart).reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  ).toFixed(2);
+
   return (
     <div className="home1-container">
+      {/* Animated top edge design */}
+      <div className="animated-top-edge">
+        <div className="wave wave"></div>
+        <div className="wave wave"></div>
+        <div className="wave wave"></div>
+      </div>
+
       <header className="home1-header">
-        <h1>Welcome to VapeShop!</h1>
-        <button className="logout-button" onClick={handleLogout}>
-          Logout
-        </button>
+        <div className="header-content">
+          <h1>VapeShop</h1>
+          <div className="header-actions">
+            <button className={`cart-button ${animateCart ? 'pulse' : ''}`} onClick={toggleCart}>
+              <span className="cart-icon">🛒</span>
+              {cartItemCount > 0 && <span className="cart-count">{cartItemCount}</span>}
+            </button>
+            <button className="logout-button1" onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
+        </div>
       </header>
 
       <section className="home1-info">
-        <p>We’re glad to have you back. Explore our latest products and offers just for you!</p>
-        <p>If you need any assistance or have questions, feel free to contact our support team.</p>
+        <h2>Premium Vaping Products</h2>
+        <p>Explore our extensive collection of high-quality vaping devices and accessories.</p>
       </section>
 
-      <section className="vape-types">
-        {Object.keys(productData).map((type) => (
-          <div key={type} className="vape-type" onClick={() => handleVapeTypeClick(type)}>
-            <h3>{type.replace('-', ' ').toUpperCase()}</h3>
+      <section className="categories-section">
+        <h2>Browse Categories</h2>
+        <div className="vape-types">
+          {Object.keys(productData).map((type) => (
+            <div 
+              key={type} 
+              className={`vape-type ${selectedType === type ? 'active' : ''}`} 
+              onClick={() => handleVapeTypeClick(type)}
+            >
+              <h3>{type.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</h3>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {selectedType && (
+        <section className="product-section">
+          <h2>{selectedType.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</h2>
+          <div className="product-grid">
+            {productData[selectedType].map((product) => (
+              <div key={product.id} className="product-item">
+                <div className="product-image-placeholder"></div>
+                <div className="product-details">
+                  <h3 className="product-name">{product.name}</h3>
+                  <span className="product-price">£{product.price.toFixed(2)}</span>
+                </div>
+                <button
+                  className="add-to-cart-btn"
+                  onClick={() => handleAddToCart(product.name, product.price, product.id)}
+                >
+                  Add to Cart
+                </button>
+              </div>
+            ))}
           </div>
-        ))}
-      </section>
+        </section>
+      )}
 
-      <section className="product-list">
-        {selectedType && (
-          <div id={selectedType}>
-            <ul>
-              {productData[selectedType].map((product) => (
-                <li key={product.name} className="product-item">
-                  <span className="name">{product.name}</span>
-                  <span className="price">£{product.price}</span>
-                  <button
-                    className="add-to-cart"
-                    onClick={() => handleAddToCart(product.name, product.price)}
-                  >
-                    Add to Cart
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </section>
-
-      <section id="cart">
-        <h3>Shopping Cart ({Object.keys(cart).length} items)</h3>
-        <ul id="cart-items">
-          {cartItems.length > 0 ? cartItems : <li>Your cart is empty</li>}
-        </ul>
-        {Object.keys(cart).length > 0 && (
-          <button
-            id="proceed-to-checkout"
-            className="home1-button"
-            onClick={handleProceedToCheckout}
-          >
-            Proceed to Checkout
-          </button>
-        )}
-      </section>
+      {/* Floating Cart Panel */}
+      <div className={`cart-panel ${isCartOpen ? 'open' : ''}`}>
+        <div className="cart-header">
+          <h3>Your Cart</h3>
+          <button className="close-cart" onClick={toggleCart}>×</button>
+        </div>
+        
+        <div className="cart-content">
+          {Object.keys(cart).length === 0 ? (
+            <div className="empty-cart">
+              <p>Your cart is empty</p>
+              <p className="empty-cart-message">Start adding products to see them here.</p>
+            </div>
+          ) : (
+            <>
+              <ul className="cart-items">{cartItems}</ul>
+              <div className="cart-total">
+                <span>Total:</span>
+                <span className="total-price">£{totalPrice}</span>
+              </div>
+              <button
+                className="checkout-btn"
+                onClick={handleProceedToCheckout}
+              >
+                Proceed to Checkout
+              </button>
+            </>
+          )}
+        </div>
+      </div>
+      
+      {/* Overlay for when cart is open */}
+      {isCartOpen && <div className="overlay" onClick={toggleCart}></div>}
     </div>
   );
 };
